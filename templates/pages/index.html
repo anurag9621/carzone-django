@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
-{% load static %}
 {% block content %}
+{% load humanize %}
+{% load static %}
 
 
     <!-- Banner start -->
@@ -135,7 +136,7 @@
                                     <div class="tag-2">Featured</div>
                                     <div class="price-box">
                                         
-                                        <span>${{ car.price }}</span>
+                                        <span>${{ car.price | intcomma }}</span>
                                     </div>
                                     <img class="d-block w-100" src="{{ car.car_photo.url }}" alt="car" style="min-height:262px; max-height: 262px;">
                                 </a>
@@ -173,7 +174,7 @@
                                 </div>
                                 <ul class="facilities-list clearfix">
                                     <li>{{car.fuel_type}}</li>
-                                    <li>{{car.miles}} km</li>
+                                    <li>{{car.miles | intcomma}} km</li>
                                     <li>{{car.transmission}}</li>
                                     <li>{{car.body_style}}</li>
                                     <li>{{car.color}}</li>
@@ -216,7 +217,7 @@
                                 <div class="facilities-list clearfix">
                                     <ul>
                                         <li>
-                                            <span><i class="flaticon-way"></i></span>{{car.miles}}
+                                            <span><i class="flaticon-way"></i></span>{{car.miles | intcomma}}
                                         </li>
                                         <li>
                                             <span><i class="flaticon-calendar-1"></i></span>{{car.year}}
@@ -251,20 +252,20 @@
                         </div>
                         <div class="detail">
                             <h1 class="title">
-                                <a href="car-details.html">Lamborghini Huracán</a>
+                                <a href="car-details.html">{{car.car_title}}</a>
                             </h1>
                             <div class="location">
                                 <a href="car-details.html">
-                                    <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
+                                    <i class="flaticon-pin"></i>{{car.city}}, {{car.state}}
                                 </a>
                             </div>
                         </div>
                         <div class="footer clearfix">
                             <div class="pull-left ratings days">
-                                <p class="cartype">Sedan</p>
+                                <p class="cartype">{{car.body_style}}</p>
                             </div>
                             <div class="pull-right">
-                                <p class="price">$850.00</p>
+                                <p class="price">${{car.price | intcomma}}</p>
                             </div>
                         </div>
                     </div >
