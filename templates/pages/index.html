@@ -38,52 +38,43 @@
             </div>
             <!-- Search box 3 start -->
             <div class="search-box-4 sb-8">
-                <form action="#" method="">
+                <form action="{% url 'search' %}" method="">
                     <div class="form-group">
                         <input type="text" name="keyword" placeholder="Search by name" class="form-control">
                     </div>
-                    <div class="form-group">
-                        <select class="form-control search-fields" name="select-brand">
-                            <option selected="true" disabled="disabled">Brand</option>
-                            <option>Audi</option>
-                            <option>BMW</option>
-                            <option>Honda</option>
-                            <option>Nissan</option>
-                        </select>
-                    </div>
+                    
                     <div class="form-group">
                         <select class="form-control search-fields" name="select-make">
                             <option selected="true" disabled="disabled">Model</option>
-                            <option>BMW</option>
-                            <option>Honda</option>
-                            <option>Lamborghini Huracán</option>
-                            <option>Sports Car</option>
+                            {% for model in search_fields %}
+                            <option value="{{model.model}}">{{model.model}}</option>
+                            {%endfor%}
                         </select>
                     </div>
                     <div class="form-group">
                         <select class="form-control search-fields" name="select-location">
                             <option selected="true" disabled="disabled">Location</option>
-                            <option>United States</option>
-                            <option>United Kingdom</option>
+                            {% for city in search_fields %}
+
+                            <option value="{{city.city}}">{{city.city}}</option>
+
+                            {% endfor %}
                         </select>
                     </div>
                     <div class="form-group">
                         <select class="form-control search-fields" name="select-year">
                             <option selected="true" disabled="disabled">Year</option>
-                            <option>2016</option>
-                            <option>2017</option>
-                            <option>2018</option>
-                            <option>2019</option>
+                            {% for year in search_fields %}
+                            <option value="{{year.year}}">{{year.year}}</option>
+                            {%endfor%}
                         </select>
                     </div>
                     <div class="form-group">
                         <select class="form-control search-fields" name="select-type">
                             <option selected="true" disabled="disabled">Select Type Of Car</option>
-                            <option>Sedan</option>
-                            <option>Sports</option>
-                            <option>Hatchback</option>
-                            <option>Pickup Truck</option>
-                            <option>SUV</option>
+                            {% for body_style in search_fields %}
+                            <option value="{{body_style.body_style}}">{{body_style.body_style}}</option>
+                            {% endfor %}
                         </select>
                     </div>
                     <div class="range-slider clearfix">
@@ -136,7 +127,7 @@
                                     <div class="tag-2">Featured</div>
                                     <div class="price-box">
                                         
-                                        <span>${{ car.price | intcomma }}</span>
+                                        <span>₹{{ car.price | intcomma }}</span>
                                     </div>
                                     <img class="d-block w-100" src="{{ car.car_photo.url }}" alt="car" style="min-height:262px; max-height: 262px;">
                                 </a>
@@ -211,7 +202,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="car-box">
                         <div class="car-thumbnail">
-                            <a href="car-details.html" class="car-img">
+                            <a href="{% url 'car_detail' car.id %}" class="car-img">
                                 <div class="tag">For Sale</div>
                                 <img class="d-block w-100" src="{{ car.car_photo.url }}" alt="car" style="min-height: 262px; max-height: 262px;">
                                 <div class="facilities-list clearfix">
@@ -255,7 +246,7 @@
                                 <a href="{% url 'car_detail' car.id %}">{{car.car_title}}</a>
                             </h1>
                             <div class="location">
-                                <a href="car-details.html">
+                                <a href="{% url 'car_detail' car.id %}">
                                     <i class="flaticon-pin"></i>{{car.city}}, {{car.state}}
                                 </a>
                             </div>
@@ -265,7 +256,7 @@
                                 <p class="cartype">{{car.body_style}}</p>
                             </div>
                             <div class="pull-right">
-                                <p class="price">${{car.price | intcomma}}</p>
+                                <p class="price">₹{{car.price | intcomma}}</p>
                             </div>
                         </div>
                     </div >
@@ -358,7 +349,7 @@
                                     <img src="img/car-14.jpg" alt="best-car" class="img-fluid modalLabel-2">
                                     <div class="sobuz">
                                         <div class="price-box" style="padding-bottom: 5px;">
-                                            <span class="del-2">$1050.00</span>
+                                            <span class="del-2">₹1050.00</span>
                                         </div>
                                         <div class="">
                                             <a href="car-details.html"
@@ -394,7 +385,7 @@
                                             <li>Audi</li>
                                             <li>2020</li>
                                             <li>Brand New</li>
-                                            <li>$178,000</li>
+                                            <li>₹178,000</li>
                                         </ul>
                                     </section>
                                     <div class="description">
