@@ -10,7 +10,6 @@ def home(request):
     featured_cars = Car.objects.order_by('-created_date').filter(
         is_featured=True)
     all_cars=Car.objects.order_by('-created_date')
-    # search_fields=Car.objects.order_by('model','year','city','state','body_style')
     model_search = Car.objects.values_list('model', flat=True).distinct()
     year_search = Car.objects.values_list('year', flat=True).distinct()
     state_search = Car.objects.values_list('state', flat=True).distinct()
@@ -39,6 +38,7 @@ def about(request):
 
 
 def services(request):
+    
     return render(request, 'pages/services.html')
 
 

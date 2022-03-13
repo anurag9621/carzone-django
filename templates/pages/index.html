@@ -44,43 +44,43 @@
                     </div>
                     
                     <div class="form-group">
-                        <select class="form-control search-fields" name="select-make">
+                        <select class="form-control search-fields" name="model">
                             <option selected="true" disabled="disabled">Model</option>
-                            {% for model in search_fields %}
-                            <option value="{{model.model}}">{{model.model}}</option>
+                            {% for model in model_search %}
+                            <option value="{{model}}">{{model}}</option>
                             {%endfor%}
                         </select>
                     </div>
                     <div class="form-group">
-                        <select class="form-control search-fields" name="select-location">
+                        <select class="form-control search-fields" name="state">
                             <option selected="true" disabled="disabled">Location</option>
-                            {% for city in search_fields %}
+                            {% for state in state_search %}
 
-                            <option value="{{city.city}}">{{city.city}}</option>
+                            <option value="{{state}}">{{state}}</option>
 
                             {% endfor %}
                         </select>
                     </div>
                     <div class="form-group">
-                        <select class="form-control search-fields" name="select-year">
+                        <select class="form-control search-fields" name="year">
                             <option selected="true" disabled="disabled">Year</option>
-                            {% for year in search_fields %}
-                            <option value="{{year.year}}">{{year.year}}</option>
+                            {% for year in year_search %}
+                            <option value="{{year}}">{{year}}</option>
                             {%endfor%}
                         </select>
                     </div>
                     <div class="form-group">
-                        <select class="form-control search-fields" name="select-type">
+                        <select class="form-control search-fields" name="body_style">
                             <option selected="true" disabled="disabled">Select Type Of Car</option>
-                            {% for body_style in search_fields %}
-                            <option value="{{body_style.body_style}}">{{body_style.body_style}}</option>
+                            {% for body_style in body_style_search %}
+                            <option value="{{body_style}}">{{body_style}}</option>
                             {% endfor %}
                         </select>
                     </div>
                     <div class="range-slider clearfix">
                         <label>Price</label>
-                        <div data-min="0" data-max="150000" data-min-name="min_price" data-max-name="max_price"
-                            data-unit="USD" class="range-slider-ui ui-slider" aria-disabled="false"></div>
+                        <div data-min="0" data-max="15000000" data-min-name="min_price" data-max-name="max_price"
+                            data-unit="INR" class="range-slider-ui ui-slider" aria-disabled="false"></div>
                         <div class="clearfix"></div>
                     </div>
                     <div class="form-group">
