@@ -1,11 +1,9 @@
 #header{
-    background-color: white;
+    background-color: rgb(0, 0, 0);
     color: red;
     box-shadow: 0px 0px 3px 0px #ff0000;
 }
-#header a:link , #header a:visited{
-    color: black;
-}
+
 div.breadcrumbs{
     background-color: #1c1f1f;
 }
@@ -32,5 +30,5 @@ div.breadcrumbs{
 background-color: #1c1f1f;
 }
 a:link, a:visited{
-    color: #1c1f1f;
+    color: white;
 }
