@@ -31,6 +31,7 @@ def home(request):
 
 def about(request):
     teams = Team.objects.all()
+    
     data = {
         'teams': teams,
     }

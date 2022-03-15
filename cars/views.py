@@ -8,11 +8,23 @@ from django.core.paginator import Paginator, EmptyPage,PageNotAnInteger
 # Create your views here.
 def cars(request):
     cars = Car.objects.order_by('-created_date')
-    paginator= Paginator(cars,5)
+    paginator= Paginator(cars,3)
     page=request.GET.get('page')
     paged_cars=paginator.get_page(page)
+    all_cars = Car.objects.order_by('-created_date')
+
+    model_search = Car.objects.values_list('model', flat=True).distinct()
+    year_search = Car.objects.values_list('year', flat=True).distinct()
+    state_search = Car.objects.values_list('state', flat=True).distinct()
+    body_style_search = Car.objects.values_list('body_style',
+                                                flat=True).distinct()
     data = {
         'cars': paged_cars,
+        'model_search': model_search,
+        'all_cars': all_cars,
+        'year_search': year_search,
+        'state_search': state_search,
+        'body_style_search': body_style_search,
     }
     return render(request, 'cars/cars.html',data)
 
