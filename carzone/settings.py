@@ -29,10 +29,15 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+LOGIN_REDIRECT_URL = 'dashboard'
+
+
 # Application definition
 
 INSTALLED_APPS = [
+    #add apps
     'cars.apps.CarsConfig',
+    'contacts.apps.ContactsConfig',
     'accounts.apps.AccountsConfig',
     'pages.apps.PagesConfig',
     'django.contrib.admin',
@@ -41,8 +46,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #
     'ckeditor',
+    #add comma in betwwen numbers of thousend and all
     'django.contrib.humanize',
+    #auth with socal media
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    #providers
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -142,5 +157,7 @@ from django.contrib.messages import constants as messages
 
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
-    
+
     }
+
+SITE_ID = 1

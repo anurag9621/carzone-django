@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
-{% load static %}
+
 {% block title %} | Login {% endblock %}
 
 {% block content %}
-
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %} 
 
 
 
@@ -50,9 +52,9 @@
                         </div>
                         <div class="clearfix"></div>
                         <ul class="social-list">
-                            <li><a href="#" class="facebook-bg"><i
+                            <li><a href="{% provider_login_url 'facebook' method='js_sdk' %}" class="facebook-bg"><i
                                         class="fa fa-facebook facebook-i"></i><span>Facebook</span></a></li>
-                            <li><a href="#" class="google-bg"><i
+                            <li><a href="{% provider_login_url 'google' %}" class="google-bg"><i
                                         class="fa fa-google google-i"></i><span>Google</span></a></li>
                         </ul>
                     </form>
