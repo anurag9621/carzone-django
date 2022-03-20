@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 {% load humanize %}
 {% block title %} | {{single_car.car_title}} {% endblock %}
-
+{% load static %}
 {% block content %}
 
 <!-- Sub banner start -->
 <div class="sub-banner overview-bgi">
     <div class="container breadcrumb-area">
         <div class="breadcrumb-areas">
+
             <h1>{{single_car.car_title}}, {{single_car.model}}</h1>
             <ul class="breadcrumbs">
                 <li><a href="{% url 'home' %}">Home</a></li>
@@ -26,7 +27,9 @@
                 <div class="car-details-section">
                     <!-- Heading start -->
                     <div class="heading-car clearfix">
+
                         <div class="pull-left">
+                            
                             <h3>{{single_car.year}} {{single_car.car_title}}, {{single_car.model}} </h3>
                             <h6>
                                 <i class="flaticon-pin"></i>{{single_car.city}}, {{single_car.state}}
@@ -140,8 +143,7 @@
 
                     <!-- Advanced search start -->
                     <div class="widget advanced-search d-none-992">
-                        <button class="btn btn-outline-danger bomd btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Send
-                            message</button>
+                    {% include 'includes/messages.html' %}
                     
                     
                         <br>
@@ -195,6 +197,8 @@
                             </li>
                             
                         </ul>
+                        <button class="btn btn-outline-danger bomd btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Send
+                            message</button>
                     </div>
                     
                     <!-- Inquiry Modal -->
@@ -203,13 +207,22 @@
                             <div class="modal-content">
                                 <div class="contact-dealer modal-header">
                                     <!-- <h5 class="modal-title" id="inquiryModalLabel">Contact Dealer</h5> -->
-                                    <img src="img/logos/logo-black-white.png">
+                                    <center>
+                                        <img src="{% static 'img/logos/logo-black-white.png' %}">
+                                    </center>
                                     <button type="button" class="close" data-dismiss="modal">
                                         <span>&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="#">
+                                    <form action="{% url 'inquiry' %}" method="POST">
+                                        {% csrf_token %}
+                                        {% if user.is_authenticated %}
+                                        <input type="hidden" name="user_id" value="{{user.id}}">
+                                        {% else %}
+                                        <input type="hidden" name="user_id" value="0">
+                                        {% endif %}
+                                        <input type="hidden" name="car_id" value="{{single_car.id}}">
                                         <div class="form-group">
                                             <label for="name" class="col-form-label">Hello, My Name is</label>
                                             <div class="row">
@@ -233,11 +246,9 @@
                                                 </option>
                                             </select>
                                         </div>
-                    
                                         <div class="form-group">
-                                            <input type="text" name="car_title" class="form-control" value="LAMBORGHINI HURACÁN." readonly>
+                                            <input type="text" name="car_title" class="form-control" value="{{ single_car.car_title }}" readonly>
                                         </div>
-                    
                                         <div class="form-group">
                                             <label for="name" class="col-form-label">I live in</label>
                                             <div class="row">
@@ -249,7 +260,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                    
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col">
@@ -264,7 +274,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                    
                                         <div class="form-group">
                                             <label for="message" class="col-form-label">Add comments</label>
                                             <textarea name="message" class="form-control"
@@ -277,6 +286,7 @@
                             </div>
                         </div>
                     </div>
+
                     <!-- Question start -->
                     <div class="widget question">
                         <h5 class="sidebar-title">Get a Question?</h5>

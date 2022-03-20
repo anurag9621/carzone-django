@@ -13,8 +13,8 @@ class Contact(models.Model):
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)
-    phone = models.IntegerField()
-    message = models.TextField( blank=True , max_length=100)
+    phone = models.CharField(max_length=100)
+    message = models.TextField(blank=True)
     user_id = models.IntegerField(blank=True)
     create_date=models.DateTimeField(blank=True,default=datetime.now)
 
