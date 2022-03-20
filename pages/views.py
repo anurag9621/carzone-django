@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.shortcuts import render
 from cars.models import Car
 
@@ -31,7 +32,7 @@ def home(request):
 
 def about(request):
     teams = Team.objects.all()
-    
+
     data = {
         'teams': teams,
     }
@@ -39,9 +40,18 @@ def about(request):
 
 
 def services(request):
-    
+
     return render(request, 'pages/services.html')
 
 
 def contact(request):
+    if request.model== "POST":
+        name=request.POST['name']
+        email = request.POST['email']
+        subject = request.POST['subject']
+        phone = request.POST['phone']
+        message = request.POST['message']
+
+    
+
     return render(request, 'pages/contact.html')
