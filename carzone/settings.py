@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-se6^!wxcfu#=++ia%hzb@asg(6bv7(yl^nbc-+r0#ywr0+nsjc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -103,11 +103,14 @@ WSGI_APPLICATION = 'carzone.wsgi.application'
 #     }
 # }
 DATABASES = {
-    'default':
-    dj_database_url.config(
-        default='postgres://postgres:Mahadev#1@lochalhost/carzone_db')
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'carzone_db',
+        'USER': 'postgres',
+        'PASSWORD': 'Mahadev#1',
+        'HOST': 'localhost',
+    }
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
