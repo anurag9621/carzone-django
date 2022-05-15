@@ -170,19 +170,11 @@ MESSAGE_TAGS = {
 SITE_ID = 1
 
 #email sending
-<<<<<<< HEAD
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'stalonfernandes@gmail.com'
-EMAIL_HOST_PASSWORD = '&7pHt0n8'
-EMAIL_USE_TLS = True
-=======
 EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT=587
 EMAIL_HOST_USER='stalonfernandes@gmail.com'
-EMAIL_HOST_PASSWORD = '*********'
+EMAIL_HOST_PASSWORD = '&7pHt0n8'
 EMAIL_USE_TLS=True
->>>>>>> 7da28cc989f69f2738170e67928b9496ee75105c
 
 #whitenoice
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
