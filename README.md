@@ -51,10 +51,8 @@ python manage.py runserver
 
 ## Contributors:
 1. Anurag Pandey 
-2. Sarthak Sharma Naik 
-3. Abhinav Tomer 
-4. Aman Kumar Jha 
-5. Stallone Fernandes 
+2. Sarthak Sharma Naik  
+3. Stallone Fernandes 
 
 > Feel Free To Reach Out To Us On Our Socials 
 
