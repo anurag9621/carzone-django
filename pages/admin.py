@@ -24,3 +24,9 @@ class TeamAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Team, TeamAdmin)
+
+
+
+
+
+
