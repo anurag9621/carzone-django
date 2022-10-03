@@ -172,8 +172,8 @@ SITE_ID = 1
 #email sending
 EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT=587
-EMAIL_HOST_USER='stalonfernandes@gmail.com'
-EMAIL_HOST_PASSWORD = '&7pHt0n8'
+EMAIL_HOST_USER='sundrampaney123buy@gmail.com'
+EMAIL_HOST_PASSWORD = 'Mahadev#1'
 EMAIL_USE_TLS=True
 
 #whitenoice
