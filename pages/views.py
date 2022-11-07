@@ -60,7 +60,7 @@ def contact(request):
         send_mail(
             email_subject,
             message_body,
-            'stalonfernandes@gmail.com',
+            'sundrampandey123buy@gmail.com',
             [admin_email],
             fail_silently=False,
         )
